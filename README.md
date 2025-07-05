@@ -19,19 +19,31 @@
 ![image](https://github.com/user-attachments/assets/47d0c891-73f8-403a-bcf8-bef8095b98e1)
 
 Features 
+
 ✅ Role-based dashboard (Admin vs Patient)
+
 ✅ Add / edit / delete patients and incidents
+
 ✅ File attachments per incident
+
 ✅ Live KPIs (patients, revenue, pending requests)
+
 ✅ LocalStorage-based data persistence (no backend)
+
 ✅ Beautiful charts & glow effects for better UX
+
 ✅ Fully responsive, works on desktop & mobile
+
 ✅ Dark UI with Tailwind CSS & custom styling
 
 Built With
+
 ⚛️ React (Hooks, Context API)
+
 🎨 Tailwind CSS
+
 📦 LocalStorage for data
+
 📊 Recharts / Chart.js (for graphs)
 
 
