@@ -7,18 +7,19 @@ export default function PatientsPage() {
   const [editing, setEditing] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
+  // Load patients on mount
   useEffect(() => {
     setPatients(loadPatients());
   }, []);
 
+  // Save or update patient
   const handleSave = (patient) => {
     let updated;
     if (editing) {
       updated = patients.map(p => p.id === editing.id ? patient : p);
     } else {
       const existingNumbers = patients.map(p => parseInt(p.id.replace('P', ''))).filter(n => !isNaN(n));
-      const maxNumber = existingNumbers.length > 0 ? Math.max(...existingNumbers) : 0;
-      const newId = `P${maxNumber + 1}`;
+      const newId = `P${existingNumbers.length ? Math.max(...existingNumbers) + 1 : 1}`;
       updated = [...patients, { ...patient, id: newId }];
     }
     setPatients(updated);
@@ -27,6 +28,7 @@ export default function PatientsPage() {
     setShowForm(false);
   };
 
+  // Delete patient
   const handleDelete = (id) => {
     const updated = patients.filter(p => p.id !== id);
     setPatients(updated);
@@ -37,26 +39,15 @@ export default function PatientsPage() {
     <div className="p-4 md:p-6 min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100">
       <h1 className="text-3xl font-bold mb-4 text-blue-400">👥 Manage Patients</h1>
 
-      
+      {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-gray-700 rounded-xl p-4 shadow hover:shadow-xl hover:ring hover:ring-blue-500/50 transition">
-          <h2 className="font-semibold text-blue-300 mb-1">Total Patients</h2>
-          <p className="text-3xl font-bold">{patients.length}</p>
-        </div>
-        <div className="bg-gray-700 rounded-xl p-4 shadow hover:shadow-xl hover:ring hover:ring-green-500/50 transition">
-          <h2 className="font-semibold text-green-300 mb-1">Latest Patient</h2>
-          <p className="truncate">{patients.length ? patients[patients.length - 1].name : 'N/A'}</p>
-        </div>
-        <div className="bg-gray-700 rounded-xl p-4 shadow hover:shadow-xl hover:ring hover:ring-purple-500/50 transition">
-          <h2 className="font-semibold text-purple-300 mb-1">Oldest Patient</h2>
-          <p className="truncate">{patients.length ? patients[0].name : 'N/A'}</p>
-        </div>
-        <div className="bg-gray-700 rounded-xl p-4 shadow hover:shadow-xl hover:ring hover:ring-yellow-500/50 transition">
-          <h2 className="font-semibold text-yellow-300 mb-1">Data Saved</h2>
-          <p className="text-green-400 font-medium">{patients.length ? '✅ Yes' : '⚠ No data'}</p>
-        </div>
+        <Card title="Total Patients" color="text-blue-300" value={patients.length} />
+        <Card title="Latest Patient" color="text-green-300" value={patients.length ? patients[patients.length - 1].name : 'N/A'} />
+        <Card title="Oldest Patient" color="text-purple-300" value={patients.length ? patients[0].name : 'N/A'} />
+        <Card title="Data Saved" color="text-yellow-300" value={patients.length ? '✅ Yes' : '⚠ No data'} />
       </div>
 
+      {/* Add patient button */}
       <button
         onClick={() => { setEditing(null); setShowForm(true); }}
         className="mb-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded shadow hover:shadow-lg transition"
@@ -64,7 +55,7 @@ export default function PatientsPage() {
         ➕ Add New Patient
       </button>
 
-      
+      {/* Form modal */}
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
@@ -84,7 +75,7 @@ export default function PatientsPage() {
         </div>
       )}
 
-     
+      {/* Patients table */}
       <div className="overflow-x-auto">
         <table className="min-w-full bg-gray-800 rounded-lg shadow">
           <thead className="bg-gray-700 text-gray-300">
@@ -106,10 +97,16 @@ export default function PatientsPage() {
                 <td className="p-2">
                   <button
                     onClick={() => { setEditing(p); setShowForm(true); }}
-                    className="text-blue-400 hover:text-blue-300 mr-2">Edit</button>
+                    className="text-blue-400 hover:text-blue-300 mr-2"
+                  >
+                    Edit
+                  </button>
                   <button
                     onClick={() => handleDelete(p.id)}
-                    className="text-red-400 hover:text-red-300">Delete</button>
+                    className="text-red-400 hover:text-red-300"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -121,6 +118,16 @@ export default function PatientsPage() {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+// Small reusable card component
+function Card({ title, color, value }) {
+  return (
+    <div className="bg-gray-700 rounded-xl p-4 shadow hover:shadow-xl hover:ring hover:ring-blue-500/50 transition">
+      <h2 className={`font-semibold mb-1 ${color}`}>{title}</h2>
+      <p className="truncate font-bold">{value}</p>
     </div>
   );
 }

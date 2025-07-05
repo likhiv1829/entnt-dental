@@ -12,10 +12,22 @@ export default function FileUpload({ files, setFiles }) {
   };
 
   return (
-    <div>
-      <input type="file" multiple onChange={handleFileChange} className="border p-1" />
-      <div className="flex gap-2 mt-1">
-        {files.map((f, idx) => <span key={idx} className="text-xs">{f.name}</span>)}
+    <div className="w-full">
+      <input
+        type="file"
+        multiple
+        onChange={handleFileChange}
+        className="border border-gray-300 p-2 rounded w-full md:w-auto"
+      />
+      <div className="flex flex-wrap gap-2 mt-2">
+        {files.map((f, idx) => (
+          <span
+            key={idx}
+            className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded"
+          >
+            {f.name}
+          </span>
+        ))}
       </div>
     </div>
   );

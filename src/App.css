@@ -1,68 +1,76 @@
+/* Root container */
 #root {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0rem;
+  padding: 0;
   text-align: center;
 }
 
+/* Logo animation & hover */
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
   transition: filter 300ms;
+  will-change: filter;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* Spin animation when motion allowed */
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Card & helper text */
 .card {
-  padding: 0rem;
+  padding: 0;
 }
 
 .read-the-docs {
   color: #888;
 }
 
+/* ----------------------------------------
+   FullCalendar custom styling
+----------------------------------------- */
+
+/* Remove default event styles to use custom React render */
 .fc-event.custom-event {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
+/* Header cell (days of week) */
 .fc .fc-col-header-cell {
-  background-color: #1f2937 !important;
-  color: #f9fafb !important;          
+  background-color: #1f2937 !important;   /* dark gray */
+  color: #f9fafb !important;              /* near white */
 }
 
-
+/* Date number inside each day cell */
 .fc .fc-daygrid-day-number {
-  color: #f9fafb !important;             
+  color: #f9fafb !important;
 }
 
-
+/* Background of each day cell */
 .fc .fc-daygrid-day {
-  background-color: #111827 !important;  
+  background-color: #111827 !important;   /* even darker gray */
 }
 
-
+/* Background for "today" cell */
 .fc .fc-day-today {
-  background-color: #374151 !important; 
+  background-color: #374151 !important;   /* highlight today */
 }

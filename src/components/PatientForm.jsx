@@ -27,10 +27,16 @@ export default function PatientForm({ onSave, editing }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-800 p-4 rounded shadow mb-4">
-      <h2 className="text-xl font-semibold mb-3">{editing ? '✏ Edit Patient' : '➕ Add Patient'}</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-gray-800 p-4 sm:p-5 md:p-6 rounded shadow mb-4 max-w-screen-sm mx-auto"
+    >
+      <h2 className="text-xl md:text-2xl font-semibold mb-3 text-yellow-300">
+        {editing ? '✏ Edit Patient' : '➕ Add Patient'}
+      </h2>
       {error && <div className="text-red-400 mb-2">{error}</div>}
 
+      {/* Patient Name */}
       <div className="mb-3">
         <label className="block text-gray-300 mb-1">Patient Name</label>
         <input
@@ -38,10 +44,11 @@ export default function PatientForm({ onSave, editing }) {
           value={form.name}
           onChange={handleChange}
           placeholder="e.g. John Doe"
-          className="w-full p-2 rounded bg-gray-700 text-white"
+          className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
 
+      {/* Date of Birth */}
       <div className="mb-3">
         <label className="block text-gray-300 mb-1">Date of Birth</label>
         <input
@@ -49,10 +56,11 @@ export default function PatientForm({ onSave, editing }) {
           type="date"
           value={form.dob}
           onChange={handleChange}
-          className="w-full p-2 rounded bg-gray-700 text-white"
+          className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
 
+      {/* Contact */}
       <div className="mb-3">
         <label className="block text-gray-300 mb-1">Contact</label>
         <input
@@ -60,22 +68,25 @@ export default function PatientForm({ onSave, editing }) {
           value={form.contact}
           onChange={handleChange}
           placeholder="e.g. 9876543210"
-          className="w-full p-2 rounded bg-gray-700 text-white"
+          className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
 
-      <div className="mb-3">
+      {/* Health Info */}
+      <div className="mb-4">
         <label className="block text-gray-300 mb-1">Health Info</label>
         <input
           name="healthInfo"
           value={form.healthInfo}
           onChange={handleChange}
           placeholder="e.g. No allergies"
-          className="w-full p-2 rounded bg-gray-700 text-white"
+          className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
 
-      <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full md:w-auto"
+      >
         {editing ? 'Save Changes' : 'Add Patient'}
       </button>
     </form>

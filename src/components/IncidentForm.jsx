@@ -51,22 +51,23 @@ export default function IncidentForm({ onSave, editing, patients }) {
   };
 
   return (
-    <div className="bg-gray-800 p-4 md:p-6 rounded shadow mb-4 max-h-[80vh] overflow-y-auto w-full max-w-xl mx-auto">
+    <div className="bg-gray-800 p-4 sm:p-5 md:p-6 rounded shadow mb-4 max-h-[80vh] overflow-y-auto w-full max-w-screen-sm mx-auto">
 
       <form onSubmit={handleSubmit}>
-        <h2 className="text-xl font-semibold mb-3 text-yellow-300">
+        <h2 className="text-xl md:text-2xl font-semibold mb-3 text-yellow-300">
           {editing ? '✏ Edit Incident / Appointment' : '➕ Add New Incident / Appointment'}
         </h2>
+
         {error && <div className="text-red-400 mb-2">{error}</div>}
 
-        
+        {/* Patient Select */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Select Patient</label>
           <select
             name="patientId"
             value={form.patientId}
             onChange={handleChange}
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           >
             <option value="">-- Select patient --</option>
@@ -76,7 +77,7 @@ export default function IncidentForm({ onSave, editing, patients }) {
           </select>
         </div>
 
-       
+        {/* Title */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Title</label>
           <input
@@ -84,12 +85,12 @@ export default function IncidentForm({ onSave, editing, patients }) {
             value={form.title}
             onChange={handleChange}
             placeholder="e.g. Root Canal"
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           />
         </div>
 
-        
+        {/* Description */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Description</label>
           <input
@@ -97,11 +98,11 @@ export default function IncidentForm({ onSave, editing, patients }) {
             value={form.description}
             onChange={handleChange}
             placeholder="Short description"
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
         </div>
 
-       
+        {/* Comments */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Comments</label>
           <input
@@ -109,11 +110,11 @@ export default function IncidentForm({ onSave, editing, patients }) {
             value={form.comments}
             onChange={handleChange}
             placeholder="Any additional comments"
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
         </div>
 
-        
+        {/* Appointment Date */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Appointment Date & Time</label>
           <input
@@ -121,12 +122,12 @@ export default function IncidentForm({ onSave, editing, patients }) {
             type="datetime-local"
             value={form.appointmentDate}
             onChange={handleChange}
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           />
         </div>
 
-        
+        {/* Cost */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Cost (₹)</label>
           <input
@@ -135,18 +136,18 @@ export default function IncidentForm({ onSave, editing, patients }) {
             value={form.cost}
             onChange={handleChange}
             placeholder="e.g. 500"
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
         </div>
 
-       
+        {/* Status */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Status</label>
           <select
             name="status"
             value={form.status}
             onChange={handleChange}
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           >
             <option value="">-- Select status --</option>
@@ -155,7 +156,7 @@ export default function IncidentForm({ onSave, editing, patients }) {
           </select>
         </div>
 
-       
+        {/* Next Appointment Date */}
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Next Appointment Date</label>
           <input
@@ -163,17 +164,23 @@ export default function IncidentForm({ onSave, editing, patients }) {
             type="date"
             value={form.nextDate}
             onChange={handleChange}
-            className="w-full p-2 rounded bg-gray-700 text-white"
+            className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
         </div>
 
-        
-        <div className="mb-3">
+        {/* File Upload */}
+        <div className="mb-4">
           <label className="block text-gray-300 mb-1">Attach Files</label>
-          <FileUpload files={form.attachments} setFiles={(attachments) => setForm({ ...form, attachments })} />
+          <FileUpload
+            files={form.attachments}
+            setFiles={(attachments) => setForm({ ...form, attachments })}
+          />
         </div>
 
-        <button type="submit" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+        <button
+          type="submit"
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded w-full md:w-auto"
+        >
           {editing ? 'Save Changes' : 'Add Incident'}
         </button>
       </form>

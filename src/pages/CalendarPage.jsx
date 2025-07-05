@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid'; 
+import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { loadIncidents, loadPatients } from '../utils/localStorageHelpers';
 import '../App.css';
-
 
 export default function CalendarPage() {
   const [events, setEvents] = useState([]);
@@ -63,11 +62,11 @@ export default function CalendarPage() {
   }
 
   return (
-    <div className="p-4 min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100">
-      <h1 className="text-2xl font-bold mb-4 text-blue-400">📅 Calendar View</h1>
+    <div className="p-3 sm:p-4 md:p-6 min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-blue-400">📅 Calendar View</h1>
 
       <FullCalendar
-        plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
         headerToolbar={{
           start: 'prev,next today',
@@ -77,22 +76,23 @@ export default function CalendarPage() {
         events={events}
         eventContent={renderEventContent}
         eventClick={handleEventClick}
-        eventClassNames={() => 'custom-event'} 
+        eventClassNames={() => 'custom-event'}
         height="auto"
         datesSet={handleViewChange}
       />
 
+      {/* Modal for event details */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 text-gray-100 rounded-lg shadow-lg p-4 w-full max-w-xs">
+          <div className="bg-gray-800 text-gray-100 rounded-lg shadow-lg p-4 sm:p-5 w-full max-w-xs sm:max-w-sm md:max-w-md overflow-y-auto max-h-[80vh]">
             <div className="font-semibold text-yellow-300 mb-2">{selectedEvent.title}</div>
-            <div className="text-sm">Title: <span className="text-gray-200">{selectedEvent.data.diseaseTitle}</span></div>
-            <div className="text-sm">Status: <span className="text-gray-200">{selectedEvent.data.status}</span></div>
-            <div className="text-sm">Comments: <span className="text-gray-400">{selectedEvent.data.comments || "None"}</span></div>
-            <div className="text-sm">Cost: <span className="text-green-400">₹{selectedEvent.data.cost || 0}</span></div>
-            <button 
+            <div className="text-xs sm:text-sm mb-1">Title: <span className="text-gray-200">{selectedEvent.data.diseaseTitle}</span></div>
+            <div className="text-xs sm:text-sm mb-1">Status: <span className="text-gray-200">{selectedEvent.data.status}</span></div>
+            <div className="text-xs sm:text-sm mb-1">Comments: <span className="text-gray-400">{selectedEvent.data.comments || "None"}</span></div>
+            <div className="text-xs sm:text-sm">Cost: <span className="text-green-400">₹{selectedEvent.data.cost || 0}</span></div>
+            <button
               onClick={() => setSelectedEvent(null)}
-              className="mt-3 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+              className="mt-3 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded w-full sm:w-auto"
             >
               Close
             </button>
@@ -103,25 +103,19 @@ export default function CalendarPage() {
   );
 }
 
-
 function renderEventContent(eventInfo) {
   const [name, title] = eventInfo.event.title.split(' - ');
 
   return (
-    <div 
-      className="flex flex-col text-xs px-1 py-0.5 rounded border border-white"
-      style={{ 
+    <div
+      className="flex flex-col text-[10px] sm:text-xs px-1 py-0.5 rounded border border-white"
+      style={{
         backgroundColor: eventInfo.event.backgroundColor || eventInfo.event.extendedProps.color || '#16a34a',
         color: 'white',
         lineHeight: '1.1',
         overflow: 'hidden',
         whiteSpace: 'normal',
-        textOverflow: 'ellipsis',
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: '#fff',
-        borderRadius: '4px',
-        padding: '0px 4px',
+        textOverflow: 'ellipsis'
       }}
     >
       <span className="font-semibold">{name}</span>
