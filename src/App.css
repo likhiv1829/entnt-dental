@@ -1,0 +1,68 @@
+#root {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 0rem;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.fc-event.custom-event {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.fc .fc-col-header-cell {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;          
+}
+
+
+.fc .fc-daygrid-day-number {
+  color: #f9fafb !important;             
+}
+
+
+.fc .fc-daygrid-day {
+  background-color: #111827 !important;  
+}
+
+
+.fc .fc-day-today {
+  background-color: #374151 !important; 
+}
