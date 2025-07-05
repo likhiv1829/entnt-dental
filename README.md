@@ -3,12 +3,12 @@
 
 👥 Roles & Credentials
 Admin role: full access to patients & incidents
--username:admin@entnt.in
--password:admin123
+-username: admin@entnt.in
+-password: admin123
 
 Patient role: view only own incidents, upcoming appointments
--username-likhi@entnt.in
--password-likhi1246
+-username: likhi@entnt.in
+-password: likhi1246
 
 ![image](https://github.com/user-attachments/assets/503dbc1a-c4df-4954-895d-679fbbc0cd6b)
 ![image](https://github.com/user-attachments/assets/ac28c45c-dac9-4595-8596-8085e4eb12ad)
