@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
  🦷 ENTNT Dentals
 ✨A modern, fully responsive dental clinic dashboard built with React & Tailwind CSS.
 
