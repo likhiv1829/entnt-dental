@@ -19,10 +19,10 @@ A modern, fully responsive dental clinic management dashboard built with React &
 
 ## ⚙️ Setup
 
-git clone https://github.com/likhiv1829/entnt-dental.git
-cd entnt-dental
-npm install
-npm run dev
+-git clone https://github.com/likhiv1829/entnt-dental.git
+-cd entnt-dental
+-npm install
+-npm run dev
 
 | Role    | Username                                | Password  | Access                                        |
 | ------- | --------------------------------------- | --------- | --------------------------------------------- |
