@@ -2,6 +2,7 @@
 ✨A modern, fully responsive dental clinic dashboard built with React & Tailwind CSS.
 
 👥 Roles & Credentials
+
 ✨Admin role: full access to patients & incidents
 -username: admin@entnt.in
 -password: admin123
