@@ -60,7 +60,7 @@ export default function PatientsPage() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
             <h2 className="text-xl font-semibold mb-4 text-blue-300">
-              {editing ? 'Edit Patient' : 'Add New Patient'}
+              
             </h2>
             <PatientForm onSave={handleSave} editing={editing} />
             <div className="mt-4 flex justify-end">
