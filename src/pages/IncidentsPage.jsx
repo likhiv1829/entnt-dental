@@ -50,7 +50,7 @@ export default function IncidentsPage() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3">
           <div className="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-xl w-full max-w-xs sm:max-w-md">
             <h2 className="text-lg sm:text-xl font-semibold mb-3 text-yellow-300">
-              {editing ? 'Edit Incident' : 'Add New Incident'}
+              
             </h2>
             <IncidentForm onSave={handleSave} editing={editing} patients={patients} />
             <div className="mt-3 flex justify-end">
